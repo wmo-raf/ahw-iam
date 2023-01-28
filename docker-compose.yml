@@ -9,6 +9,8 @@ services:
         POSTGRES_DB: ${KC_DB_NAME}
         POSTGRES_USER: ${KC_DB_USER}
         POSTGRES_PASSWORD: ${KC_DB_PASSWORD}
+      ports:
+        - 5432
   keycloak:
       image: ${KC_IMAGE}
       container_name: keycloak
@@ -16,7 +18,7 @@ services:
       command: start-dev
       environment:
         KC_DB: postgres
-        KC_DB_URL_HOST: keycloak_postgres
+        KC_DB_URL_HOST: keycloak_db
         KC_DB_URL_PORT: 5432
         KC_DB_URL_DATABASE: ${KC_DB_NAME}
         KC_DB_USERNAME: ${KC_DB_USER}
